@@ -100,14 +100,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="re-4-logmein"><a href="#re-4-logmein" class="headerlink" title="re_4__logmein"></a>re_4__logmein</h1><p>拖入exeinfope查看后直接用ida64打开<br><img src="/../photo/7.png"><br>发现了一个疑似flag的运算<br><img src="/../photo/8.png"><br>直接写脚本</p>
+        <h1 id="re-4-logmein"><a href="#re-4-logmein" class="headerlink" title="re_4__logmein"></a>re_4__logmein</h1><p>拖入exeinfope查看后直接用ida64打开<br><img src="/../photo/7.png"></p>
+<p>发现了一个疑似flag的运算<br><img src="/../photo/8.png"></p>
+<p>直接写脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">key_1=&quot;:\&quot;AL_RT^L*.?+6/46&quot;</span><br><span class="line">key_2=&quot;harambe&quot;</span><br><span class="line">key_3=&quot;&quot;</span><br><span class="line">for i in range(len(key_1)):</span><br><span class="line">	key_3+=chr(ord(key_2[i%7]) ^ ord(key_1[i]))</span><br><span class="line">print(key3)</span><br></pre></td></tr></table></figure>
+
 <p>得flag</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RC3-2016-XORISGUD</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl03div6f0003hsu98eswh98n" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl03dn2ju0004bgu9971ycbct" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -141,12 +144,14 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="re-3-simple-unpack"><a href="#re-3-simple-unpack" class="headerlink" title="re_3__simple-unpack"></a>re_3__simple-unpack</h1><p>将下载的文件放入exeinfope<br><img src="/../photo/4.png"><br>发现有壳<br>将其传入kali进行脱壳<br><img src="/../photo/5.png"><br>再将文件传回Windows放入ida<br>在mian中得到flag<br><img src="/../photo/6.png"></p>
+        <h1 id="re-3-simple-unpack"><a href="#re-3-simple-unpack" class="headerlink" title="re_3__simple-unpack"></a>re_3__simple-unpack</h1><p>将下载的文件放入exeinfope<br><img src="/../photo/4.png"></p>
+<p>发现有壳<br>将其传入kali进行脱壳<br><img src="/../photo/5.png"></p>
+<p>再将文件传回Windows放入ida<br>在mian中得到flag<br><img src="/../photo/6.png"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl03div670000hsu9hwf18wfr" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl03dn2jt0003bgu98piy1fk9" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -196,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl03div6e0002hsu951ri10m2" data-title="攻防世界re_2" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl03dn2jr0001bgu93e6fe9co" data-title="攻防世界re_2" class="article-share-link">分享</a>
       
       
       
@@ -237,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl03div6g0004hsu96egecxkb" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl03dn2js0002bgu9fpsq78xx" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
       
       
       
@@ -288,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl03div6d0001hsu9c9bq5doe" data-title="Hello World" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl03dn2jn0000bgu9hl7sbbbe" data-title="Hello World" class="article-share-link">分享</a>
       
       
       
