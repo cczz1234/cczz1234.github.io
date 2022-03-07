@@ -78,6 +78,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-攻防世界Mysterious" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" class="article-date">
+  <time class="dt-published" datetime="2022-03-07T04:28:08.000Z" itemprop="datePublished">2022-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/">攻防世界Mysterious</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>先将得到的文件扔进exeinfo看看</p>
+<p><img src="/../photo/m_9.png"></p>
+<p>发现是32位，拉进ida瞅瞅</p>
+<p><img src="/../photo/m_10.png"></p>
+<p>啊哈，我们看到了flag,</p>
+<p>其中有一段未知</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcat(Text, Source);</span><br></pre></td></tr></table></figure>
+<p>我们追踪一下Source</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_itoa(Value, Source, 10);</span><br></pre></td></tr></table></figure>
+
+<p>找到Value</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value = v4 + 1;</span><br></pre></td></tr></table></figure>
+
+<p>我们通过判断条件可知v4&#x3D;122,即Value&#x3D;123.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if ( v4 == 122 &amp;&amp; String[3] == 120 &amp;&amp; String[5] == 122 &amp;&amp; String[4] == 121 )</span><br></pre></td></tr></table></figure>
+
+<p>得flag{123_Buff3r_0v3rf|0w}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0g9uby00000acu9ep003pxt" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-攻防世界re-4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" class="article-date">
@@ -110,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl03dn2ju0004bgu9971ycbct" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0g9ubya0005acu99cft83b7" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -151,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl03dn2jt0003bgu98piy1fk9" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0g9uby90003acu9ds03ai98" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -201,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl03dn2jr0001bgu93e6fe9co" data-title="攻防世界re_2" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0g9uby80002acu9gaedbp70" data-title="攻防世界re_2" class="article-share-link">分享</a>
       
       
       
@@ -242,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl03dn2js0002bgu9fpsq78xx" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0g9uby90004acu993hfdwna" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
       
       
       
@@ -293,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl03dn2jn0000bgu9hl7sbbbe" data-title="Hello World" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0g9uby60001acu963k0d0dx" data-title="Hello World" class="article-share-link">分享</a>
       
       
       
@@ -323,7 +378,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
     </div>
   </div>
 
@@ -334,6 +389,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/">攻防世界Mysterious</a>
+          </li>
         
           <li>
             <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/">攻防世界re_4</a>
@@ -349,10 +408,6 @@
         
           <li>
             <a href="/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/">攻防世界新手re_1</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/21/hello-world/">Hello World</a>
           </li>
         
       </ul>
