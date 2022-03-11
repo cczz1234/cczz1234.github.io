@@ -78,6 +78,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-buuctf-re3-base64" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/11/buuctf-re3-base64/" class="article-date">
+  <time class="dt-published" datetime="2022-03-11T03:21:14.000Z" itemprop="datePublished">2022-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无壳，32位</p>
+<p><img src="/../photo/base64_3.png"></p>
+<p>拖进ida</p>
+<p><img src="/../photo/base64_4.png"></p>
+<p>可以看到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if ( !strncmp(Destination, Str2, v5) )</span><br><span class="line">  sub_41132F(&quot;rigth flag!\n&quot;, v8);</span><br></pre></td></tr></table></figure>
+<p>将Destination与str2比较，后right flag<br>点开str2，为e3nifIH9b_C@n@dH</p>
+<p>向上追踪Destinationa发现了一个循环</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for ( j = 0; j &lt; v11; ++j )</span><br><span class="line">  Destination[j] += j;</span><br></pre></td></tr></table></figure>
+<p>继续向上追踪</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v4 = (const char *)sub_4110BE(Str, v3, v14);</span><br><span class="line">strncpy(Destination, v4, 0x28u);</span><br></pre></td></tr></table></figure>
+<p>发现sub_4110BE对Str（flag）进行过加工，点进去看看</p>
+<p><img src="/../photo/base64_2.png"></p>
+<p>3位变4位</p>
+<p>点进aAbcdefghijklmn看看</p>
+<p><img src="/../photo/base64_1.png"></p>
+<p>第65位为’&#x3D;’,明显的base64编码</p>
+<p>直接写脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line">j=0</span><br><span class="line">x=&quot;e3nifIH9b_C@n@dH&quot;</span><br><span class="line">flag=&quot;&quot;</span><br><span class="line">while  j &lt; 16:</span><br><span class="line">    flag=flag+chr(ord(x[j])-j)</span><br><span class="line">    j+=1</span><br><span class="line">print(base64.b64decode(flag))</span><br></pre></td></tr></table></figure>
+<p>得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b&#x27;&#123;i_l0ve_you&#125;&#x27;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl0lvckbr0000bku9aslk9ndj" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-攻防世界srm-50" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" class="article-date">
@@ -110,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl0gc47fs00026ou9hseg5135" data-title="攻防世界srm-50" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl0lvckby0005bku9ah6sh7yf" data-title="攻防世界srm-50" class="article-share-link">分享</a>
       
       
       
@@ -165,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0gc47fq00016ou9bg4rf4ju" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0lvckbv0001bku9df2t3lex" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
       
       
       
@@ -209,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0gc47fs00036ou91zfq28kf" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0lvckbz0007bku9htux6eq2" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -250,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0gc47ft00046ou9680pfkmd" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0lvckby0004bku95kne69o5" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -300,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0gc47fu00056ou92rje1sxm" data-title="攻防世界re_2" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0lvckbx0003bku963w52u0o" data-title="攻防世界re_2" class="article-share-link">分享</a>
       
       
       
@@ -341,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0gc47fu00066ou95h0z5sd5" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0lvckbz0006bku98mqhf303" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
       
       
       
@@ -392,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0gc47fm00006ou98j4cb0hq" data-title="Hello World" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0lvckbw0002bku9epp9amc0" data-title="Hello World" class="article-share-link">分享</a>
       
       
       
@@ -435,6 +493,10 @@
       <ul>
         
           <li>
+            <a href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/">攻防世界srm-50</a>
           </li>
         
@@ -448,10 +510,6 @@
         
           <li>
             <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/">攻防世界re_3</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/">攻防世界re_2</a>
           </li>
         
       </ul>

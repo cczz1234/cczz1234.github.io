@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>buuctf_re3_base64 | 嚚瘖的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="无壳，32位  拖进ida  可以看到 12if ( !strncmp(Destination, Str2, v5) )  sub_41132F(&quot;rigth flag!\n&quot;, v8); 将Destination与str2比较，后right flag点开str2，为e3nifIH9b_C@n@dH 向上追踪Destinationa发现了一个循环 12for ( j &#x3D; 0;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buuctf_re3_base64">
+<meta property="og:url" content="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/index.html">
+<meta property="og:site_name" content="嚚瘖的个人博客">
+<meta property="og:description" content="无壳，32位  拖进ida  可以看到 12if ( !strncmp(Destination, Str2, v5) )  sub_41132F(&quot;rigth flag!\n&quot;, v8); 将Destination与str2比较，后right flag点开str2，为e3nifIH9b_C@n@dH 向上追踪Destinationa发现了一个循环 12for ( j &#x3D; 0;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cczz1234.github.io/photo/base64_3.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/base64_4.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/base64_2.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/base64_1.png">
+<meta property="article:published_time" content="2022-03-11T03:21:14.000Z">
+<meta property="article:modified_time" content="2022-03-11T03:37:50.995Z">
+<meta property="article:author" content="嚚瘖">
+<meta property="article:tag" content="二进制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cczz1234.github.io/photo/base64_3.png">
+  
+    <link rel="alternate" href="/atom.xml" title="嚚瘖的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">嚚瘖的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I love you</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://cczz1234.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-buuctf-re3-base64" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/11/buuctf-re3-base64/" class="article-date">
+  <time class="dt-published" datetime="2022-03-11T03:21:14.000Z" itemprop="datePublished">2022-03-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      buuctf_re3_base64
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>无壳，32位</p>
+<p><img src="/../photo/base64_3.png"></p>
+<p>拖进ida</p>
+<p><img src="/../photo/base64_4.png"></p>
+<p>可以看到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if ( !strncmp(Destination, Str2, v5) )</span><br><span class="line">  sub_41132F(&quot;rigth flag!\n&quot;, v8);</span><br></pre></td></tr></table></figure>
+<p>将Destination与str2比较，后right flag<br>点开str2，为e3nifIH9b_C@n@dH</p>
+<p>向上追踪Destinationa发现了一个循环</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for ( j = 0; j &lt; v11; ++j )</span><br><span class="line">  Destination[j] += j;</span><br></pre></td></tr></table></figure>
+<p>继续向上追踪</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v4 = (const char *)sub_4110BE(Str, v3, v14);</span><br><span class="line">strncpy(Destination, v4, 0x28u);</span><br></pre></td></tr></table></figure>
+<p>发现sub_4110BE对Str（flag）进行过加工，点进去看看</p>
+<p><img src="/../photo/base64_2.png"></p>
+<p>3位变4位</p>
+<p>点进aAbcdefghijklmn看看</p>
+<p><img src="/../photo/base64_1.png"></p>
+<p>第65位为’&#x3D;’,明显的base64编码</p>
+<p>直接写脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line"></span><br><span class="line">j=0</span><br><span class="line">x=&quot;e3nifIH9b_C@n@dH&quot;</span><br><span class="line">flag=&quot;&quot;</span><br><span class="line">while  j &lt; 16:</span><br><span class="line">    flag=flag+chr(ord(x[j])-j)</span><br><span class="line">    j+=1</span><br><span class="line">print(base64.b64decode(flag))</span><br></pre></td></tr></table></figure>
+<p>得flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b&#x27;&#123;i_l0ve_you&#125;&#x27;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl0lvckbr0000bku9aslk9ndj" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">攻防世界srm-50</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/">攻防世界srm-50</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/">攻防世界Mysterious</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/">攻防世界re_4</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/">攻防世界re_3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 嚚瘖<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
