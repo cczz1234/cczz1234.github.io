@@ -78,6 +78,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-buuctf刮开有奖" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" class="article-date">
+  <time class="dt-published" datetime="2022-03-15T03:39:00.000Z" itemprop="datePublished">2022-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>查壳，发现32位无壳<br><img src="/../photo/guakai1.png"></p>
+<p>扔进ida<br><img src="/../photo/guakai2.png"></p>
+<p>发现了一个获取函数，不出意外string就是flag<br><img src="/../photo/guakai6.png"></p>
+<p>往下看我们发现了两个函数<br>sub_4010F0对v7进行了处理，通过下方if语句可知string与v7有关，我们直接改动一下sub_4010F0放进c文件里运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">int sub_4010F0(int a1[],int a2,int a3);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int v7[11]; </span><br><span class="line">      v7[0] = 90;</span><br><span class="line">      v7[1] = 74;</span><br><span class="line">      v7[2] = 83;</span><br><span class="line">      v7[3] = 69;</span><br><span class="line">      v7[4]= 67;</span><br><span class="line">      v7[5]= 97;</span><br><span class="line">      v7[6]= 78;</span><br><span class="line">      v7[7]= 72;</span><br><span class="line">      v7[8]= 51;</span><br><span class="line">      v7[9]= 110;</span><br><span class="line">      v7[10]= 103;</span><br><span class="line">      sub_4010F0(v7, 0, 10);</span><br><span class="line">     for(int i=0;i&lt;11;++i)</span><br><span class="line">     printf(&quot;%d &quot;,v7[i]);</span><br><span class="line">&#125;</span><br><span class="line">int sub_4010F0(int a1[], int a2, int a3)</span><br><span class="line">&#123;</span><br><span class="line">  int result; // eax</span><br><span class="line">  int i; // esi</span><br><span class="line">  int v5; // ecx</span><br><span class="line">  int v6; // edx</span><br><span class="line"></span><br><span class="line">  result = a3;</span><br><span class="line">  for ( i = a2; i &lt;= a3; a2 = i )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 = i;</span><br><span class="line">    v6 = a1[i];</span><br><span class="line">    if ( a2 &lt; result &amp;&amp; i &lt; result )</span><br><span class="line">    &#123;</span><br><span class="line">      do</span><br><span class="line">      &#123;</span><br><span class="line">        if ( v6 &gt; a1[result] )</span><br><span class="line">        &#123;</span><br><span class="line">          if ( i &gt;= result )</span><br><span class="line">            break;</span><br><span class="line">          ++i;</span><br><span class="line">          a1[v5] = a1[result];</span><br><span class="line">          if ( i &gt;= result )</span><br><span class="line">            break;</span><br><span class="line">          while ( a1[i] &lt;= v6 )</span><br><span class="line">          &#123;</span><br><span class="line">            if ( ++i &gt;= result )</span><br><span class="line">              goto LABEL_13;</span><br><span class="line">          &#125;</span><br><span class="line">          if ( i &gt;= result )</span><br><span class="line">            break;</span><br><span class="line">          v5 =  i;</span><br><span class="line">          a1[result] = a1[i];</span><br><span class="line">        &#125;</span><br><span class="line">        --result;</span><br><span class="line">      &#125;</span><br><span class="line">      while ( i &lt; result );</span><br><span class="line">    &#125;</span><br><span class="line">LABEL_13:</span><br><span class="line">    a1[result] = v6;</span><br><span class="line">    sub_4010F0(a1, a2, i - 1);//递归</span><br><span class="line">    result = a3;</span><br><span class="line">    ++i;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得51 67 69 72 74 78 83 90 97 103 110 </p>
+<p>点进sub_401000<br><img src="/../photo/guakai3.png"></p>
+<p>在其中发现了byte_407830,<br><img src="/../photo/guakai4.png"></p>
+<p>进去看看</p>
+<p><img src="/../photo/guakai5.png"></p>
+<p>应该是base64加密</p>
+<p>写脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">x1=&#x27;ak1w&#x27;</span><br><span class="line">x2=&#x27;V1Ax&#x27;</span><br><span class="line"></span><br><span class="line">print(base64.b64decode(x1))</span><br><span class="line"></span><br><span class="line">print(base64.b64decode(x2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>得<br>b’jMp’<br>b’WP1’<br>注意下顺序将string输出即可<br>flag{UJWP1jMp}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl0rp8q5c0002gcu93npvbvkt" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-buuctf-re3-base64" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/11/buuctf-re3-base64/" class="article-date">
@@ -124,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl0lvckbr0000bku9aslk9ndj" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl0rp8q560000gcu9dja4cuyi" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
       
       
       
@@ -168,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl0lvckby0005bku9ah6sh7yf" data-title="攻防世界srm-50" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl0rp8q5e0005gcu9d64c9jun" data-title="攻防世界srm-50" class="article-share-link">分享</a>
       
       
       
@@ -223,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0lvckbv0001bku9df2t3lex" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0rp8q5f0006gcu9go1a6od4" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
       
       
       
@@ -267,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0lvckbz0007bku9htux6eq2" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0rp8q5g0008gcu9gj642iv9" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -308,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0lvckby0004bku95kne69o5" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0rp8q5d0003gcu96ds7a0n8" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -358,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0lvckbx0003bku963w52u0o" data-title="攻防世界re_2" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0rp8q5d0004gcu9fusrgppc" data-title="攻防世界re_2" class="article-share-link">分享</a>
       
       
       
@@ -399,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0lvckbz0006bku98mqhf303" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0rp8q5f0007gcu9bqko0hj4" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
       
       
       
@@ -450,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0lvckbw0002bku9epp9amc0" data-title="Hello World" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0rp8q5b0001gcu9drb9cbfs" data-title="Hello World" class="article-share-link">分享</a>
       
       
       
@@ -493,6 +546,10 @@
       <ul>
         
           <li>
+            <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
           </li>
         
@@ -506,10 +563,6 @@
         
           <li>
             <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/">攻防世界re_4</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/">攻防世界re_3</a>
           </li>
         
       </ul>

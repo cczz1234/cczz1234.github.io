@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>buuctf刮开有奖 | 嚚瘖的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="查壳，发现32位无壳 扔进ida 发现了一个获取函数，不出意外string就是flag 往下看我们发现了两个函数sub_4010F0对v7进行了处理，通过下方if语句可知string与v7有关，我们直接改动一下sub_4010F0放进c文件里运行 1234567891011121314151617181920212223242526272829303132333435363738394041424">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buuctf刮开有奖">
+<meta property="og:url" content="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/index.html">
+<meta property="og:site_name" content="嚚瘖的个人博客">
+<meta property="og:description" content="查壳，发现32位无壳 扔进ida 发现了一个获取函数，不出意外string就是flag 往下看我们发现了两个函数sub_4010F0对v7进行了处理，通过下方if语句可知string与v7有关，我们直接改动一下sub_4010F0放进c文件里运行 1234567891011121314151617181920212223242526272829303132333435363738394041424">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cczz1234.github.io/photo/guakai1.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/guakai2.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/guakai6.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/guakai3.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/guakai4.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/guakai5.png">
+<meta property="article:published_time" content="2022-03-15T03:39:00.000Z">
+<meta property="article:modified_time" content="2022-03-15T05:33:29.168Z">
+<meta property="article:author" content="嚚瘖">
+<meta property="article:tag" content="二进制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cczz1234.github.io/photo/guakai1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="嚚瘖的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">嚚瘖的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I love you</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://cczz1234.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-buuctf刮开有奖" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" class="article-date">
+  <time class="dt-published" datetime="2022-03-15T03:39:00.000Z" itemprop="datePublished">2022-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      buuctf刮开有奖
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>查壳，发现32位无壳<br><img src="/../photo/guakai1.png"></p>
+<p>扔进ida<br><img src="/../photo/guakai2.png"></p>
+<p>发现了一个获取函数，不出意外string就是flag<br><img src="/../photo/guakai6.png"></p>
+<p>往下看我们发现了两个函数<br>sub_4010F0对v7进行了处理，通过下方if语句可知string与v7有关，我们直接改动一下sub_4010F0放进c文件里运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">int sub_4010F0(int a1[],int a2,int a3);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int v7[11]; </span><br><span class="line">      v7[0] = 90;</span><br><span class="line">      v7[1] = 74;</span><br><span class="line">      v7[2] = 83;</span><br><span class="line">      v7[3] = 69;</span><br><span class="line">      v7[4]= 67;</span><br><span class="line">      v7[5]= 97;</span><br><span class="line">      v7[6]= 78;</span><br><span class="line">      v7[7]= 72;</span><br><span class="line">      v7[8]= 51;</span><br><span class="line">      v7[9]= 110;</span><br><span class="line">      v7[10]= 103;</span><br><span class="line">      sub_4010F0(v7, 0, 10);</span><br><span class="line">     for(int i=0;i&lt;11;++i)</span><br><span class="line">     printf(&quot;%d &quot;,v7[i]);</span><br><span class="line">&#125;</span><br><span class="line">int sub_4010F0(int a1[], int a2, int a3)</span><br><span class="line">&#123;</span><br><span class="line">  int result; // eax</span><br><span class="line">  int i; // esi</span><br><span class="line">  int v5; // ecx</span><br><span class="line">  int v6; // edx</span><br><span class="line"></span><br><span class="line">  result = a3;</span><br><span class="line">  for ( i = a2; i &lt;= a3; a2 = i )</span><br><span class="line">  &#123;</span><br><span class="line">    v5 = i;</span><br><span class="line">    v6 = a1[i];</span><br><span class="line">    if ( a2 &lt; result &amp;&amp; i &lt; result )</span><br><span class="line">    &#123;</span><br><span class="line">      do</span><br><span class="line">      &#123;</span><br><span class="line">        if ( v6 &gt; a1[result] )</span><br><span class="line">        &#123;</span><br><span class="line">          if ( i &gt;= result )</span><br><span class="line">            break;</span><br><span class="line">          ++i;</span><br><span class="line">          a1[v5] = a1[result];</span><br><span class="line">          if ( i &gt;= result )</span><br><span class="line">            break;</span><br><span class="line">          while ( a1[i] &lt;= v6 )</span><br><span class="line">          &#123;</span><br><span class="line">            if ( ++i &gt;= result )</span><br><span class="line">              goto LABEL_13;</span><br><span class="line">          &#125;</span><br><span class="line">          if ( i &gt;= result )</span><br><span class="line">            break;</span><br><span class="line">          v5 =  i;</span><br><span class="line">          a1[result] = a1[i];</span><br><span class="line">        &#125;</span><br><span class="line">        --result;</span><br><span class="line">      &#125;</span><br><span class="line">      while ( i &lt; result );</span><br><span class="line">    &#125;</span><br><span class="line">LABEL_13:</span><br><span class="line">    a1[result] = v6;</span><br><span class="line">    sub_4010F0(a1, a2, i - 1);//递归</span><br><span class="line">    result = a3;</span><br><span class="line">    ++i;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得51 67 69 72 74 78 83 90 97 103 110 </p>
+<p>点进sub_401000<br><img src="/../photo/guakai3.png"></p>
+<p>在其中发现了byte_407830,<br><img src="/../photo/guakai4.png"></p>
+<p>进去看看</p>
+<p><img src="/../photo/guakai5.png"></p>
+<p>应该是base64加密</p>
+<p>写脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">x1=&#x27;ak1w&#x27;</span><br><span class="line">x2=&#x27;V1Ax&#x27;</span><br><span class="line"></span><br><span class="line">print(base64.b64decode(x1))</span><br><span class="line"></span><br><span class="line">print(base64.b64decode(x2))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>得<br>b’jMp’<br>b’WP1’<br>注意下顺序将string输出即可<br>flag{UJWP1jMp}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl0rp8q5c0002gcu93npvbvkt" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/11/buuctf-re3-base64/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">buuctf_re3_base64</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/">攻防世界srm-50</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/">攻防世界Mysterious</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/">攻防世界re_4</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 嚚瘖<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
