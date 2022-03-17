@@ -78,6 +78,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-rsa-1-buuctf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/17/rsa-1-buuctf/" class="article-date">
+  <time class="dt-published" datetime="2022-03-17T05:42:04.000Z" itemprop="datePublished">2022-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/17/rsa-1-buuctf/">rsa 1 buuctf</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>我们可以看到两个文件，根据题目，是rsa加密,如果不太了解rsa加密的可以去<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/gao131360144/article/details/79966094">https://blog.csdn.net/gao131360144/article/details/79966094</a><br>看看</p>
+<p><img src="/../photo/rsa_3.png"></p>
+<p>将pub.key用记事本打开得到加密公钥</p>
+<p><img src="/../photo/rsa_4.png"></p>
+<p>再进入<a target="_blank" rel="noopener" href="http://www.hiencode.com/pub_asys.html%E5%AF%B9%E5%85%AC%E9%92%A5%E8%BF%9B%E8%A1%8C%E8%A7%A3%E6%9E%90%EF%BC%8C%E6%88%91%E4%BB%AC%E4%BE%BF%E5%BE%97%E5%88%B0%E4%BA%86e,n">http://www.hiencode.com/pub_asys.html对公钥进行解析，我们便得到了e,n</a></p>
+<p><img src="/../photo/rsa_1.png"></p>
+<p>在<a target="_blank" rel="noopener" href="http://factordb.com/%E5%AF%B9n%E8%BF%9B%E8%A1%8C%E5%88%86%E8%A7%A3%E5%BE%97p,q">http://factordb.com/对n进行分解得p,q</a></p>
+<p><img src="/../photo/rsa_2.png"></p>
+<p>在这里我们要用到RSA Tool2 by ET!</p>
+<p><img src="/../photo/rsa_5.png"></p>
+<p>在工具里我们拿到了d</p>
+<p>这时候据可以写脚本了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import rsa</span><br><span class="line">p=285960468890451637935629440372639283459</span><br><span class="line">q=304008741604601924494328155975272418463</span><br><span class="line">N=86934482296048119190666062003494800588905656017203025617216654058378322103517  #p*q</span><br><span class="line">D=81176168860169991027846870170527607562179635470395365333547868786951080991441</span><br><span class="line">e=0x10001</span><br><span class="line">key=rsa.PrivateKey(N,e,D,q,p)     #私钥</span><br><span class="line">with open(&quot;C:\\Users\\cyq71\\Desktop\\ccccccccc\\41c4e672-98c5-43e5-adf4-49d75db307e4\\output\\flag.enc&quot;,&quot;rb&quot;) as f:   </span><br><span class="line">    f = f.read()                  #读取加密信息</span><br><span class="line">    print(rsa.decrypt(f,key))     #私钥解密</span><br></pre></td></tr></table></figure>
+
+<p>输出b’flag{decrypt_256}\n’</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl0ul0vlg0004p0u99gbkfn64" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-buuctf刮开有奖" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" class="article-date">
@@ -122,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl0rpfm3y0001b4u95lrt0hgo" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl0ul0vle0002p0u952r2hmyz" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
       
       
       
@@ -180,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl0rpfm3v0000b4u94mcrcflq" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl0ul0vl90000p0u98zp8ffx1" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
       
       
       
@@ -224,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl0rpfm430007b4u92dx7d574" data-title="攻防世界srm-50" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl0ul0vlh0008p0u910g47ccw" data-title="攻防世界srm-50" class="article-share-link">分享</a>
       
       
       
@@ -279,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0rpfm420006b4u930ayfhkh" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl0ul0vlf0003p0u962kydsgi" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
       
       
       
@@ -323,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0rpfm400002b4u9a96va4md" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl0ul0vlh0007p0u93n6i98gh" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -364,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0rpfm400003b4u95195dpd4" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl0ul0vlg0005p0u9eishdwif" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -414,7 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0rpfm410004b4u96y8s98ft" data-title="攻防世界re_2" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl0ul0vlh0006p0u91gqn7ld8" data-title="攻防世界re_2" class="article-share-link">分享</a>
       
       
       
@@ -455,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0rpfm440008b4u90w9scyse" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl0ul0vli0009p0u9dbq3ac6x" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
       
       
       
@@ -506,7 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0rpfm420005b4u9btk9fbre" data-title="Hello World" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/21/hello-world/" data-id="cl0ul0vld0001p0u9fv9y81e6" data-title="Hello World" class="article-share-link">分享</a>
       
       
       
@@ -549,6 +602,10 @@
       <ul>
         
           <li>
+            <a href="/2022/03/17/rsa-1-buuctf/">rsa 1 buuctf</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
           </li>
         
@@ -562,10 +619,6 @@
         
           <li>
             <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/">攻防世界Mysterious</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/">攻防世界re_4</a>
           </li>
         
       </ul>
