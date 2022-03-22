@@ -78,6 +78,94 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CrackRTF-1-buuctf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/22/CrackRTF-1-buuctf/" class="article-date">
+  <time class="dt-published" datetime="2022-03-22T09:33:51.000Z" itemprop="datePublished">2022-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>先查壳看看</p>
+<p><img src="/../photo/hash_1.png"></p>
+<p>无壳，32位。</p>
+<p>运行一下</p>
+<p><img src="/../photo/hash_2.png"></p>
+<p>要输入密码</p>
+<p>拉进ida里分析，以下是代码和分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main_0(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  DWORD v3; // eax</span><br><span class="line">  DWORD v4; // eax</span><br><span class="line">  char Str[260]; // [esp+4Ch] [ebp-310h] BYREF</span><br><span class="line">  int v7; // [esp+150h] [ebp-20Ch]</span><br><span class="line">  char String1[260]; // [esp+154h] [ebp-208h] BYREF</span><br><span class="line">  char Destination[260]; // [esp+258h] [ebp-104h] BYREF</span><br><span class="line"></span><br><span class="line">  memset(Destination, 0, sizeof(Destination));</span><br><span class="line">  memset(String1, 0, sizeof(String1));</span><br><span class="line">  v7 = 0;</span><br><span class="line">  printf(&quot;pls input the first passwd(1): &quot;);</span><br><span class="line">  scanf(&quot;%s&quot;, Destination);    //第一处密码</span><br><span class="line">  if ( strlen(Destination) != 6 )    //密码6位</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Must be 6 characters!\n&quot;);</span><br><span class="line">    ExitProcess(0);</span><br><span class="line">  &#125;</span><br><span class="line">  v7 = atoi(Destination);  //化为整形</span><br><span class="line">  if ( v7 &lt; 100000 )       //应该是纯数字密码</span><br><span class="line">    ExitProcess(0);</span><br><span class="line">  strcat(Destination, &quot;@DBApp&quot;);  //密码后加入字符串</span><br><span class="line">  v3 = strlen(Destination);       //v3 = 12</span><br><span class="line">  sub_40100A((BYTE *)Destination, v3, String1);     //第一处加密</span><br><span class="line">  if ( !_strcmpi(String1, &quot;6E32D0943418C2C33385BC35A1470250DD8923A9&quot;) )//加密后比较</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;continue...\n\n&quot;);</span><br><span class="line">    printf(&quot;pls input the first passwd(2): &quot;);</span><br><span class="line">    memset(Str, 0, sizeof(Str));</span><br><span class="line">    scanf(&quot;%s&quot;, Str);           //第二次输入</span><br><span class="line">    if ( strlen(Str) != 6 )     //依旧是六位</span><br><span class="line">    &#123;</span><br><span class="line">      printf(&quot;Must be 6 characters!\n&quot;);</span><br><span class="line">      ExitProcess(0);</span><br><span class="line">    &#125;</span><br><span class="line">    strcat(Str, Destination);   //将 （第一次输入+@DBApp）  加到第二次输入后</span><br><span class="line">    memset(String1, 0, sizeof(String1));</span><br><span class="line">    v4 = strlen(Str);            //v4=18</span><br><span class="line">    sub_401019((BYTE *)Str, v4, String1);    //第二处加密</span><br><span class="line">    if ( !_strcmpi(&quot;27019e688a4e62a649fd99cadaafdb4e&quot;, String1) ) //比较</span><br><span class="line">    &#123;</span><br><span class="line">      if ( !(unsigned __int8)sub_40100F(Str) )  //对str处理</span><br><span class="line">      &#123;</span><br><span class="line">        printf(&quot;Error!!\n&quot;);</span><br><span class="line">        ExitProcess(0);</span><br><span class="line">      &#125;</span><br><span class="line">      printf(&quot;bye ~~\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现有两次输入，两次加密，先看第一次加密，第一次是加密后与 “6E32D0943418C2C33385BC35A1470250DD8923A9”比较。点进第一次加密函数sub_40100A</p>
+<p><img src="/../photo/hash_4.png"></p>
+<p>里面有很多陌生函数</p>
+<p>百度一下，发现是关于哈希算法的。有一处比较重要</p>
+<p><img src="/../photo/hash_5.png"></p>
+<p>在<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/seccrypto/alg-id">ALG_ID</a>中找到0x8004u对应的加密方式为sha1。由刚刚分析可知，第一次输入的密码是纯数字且是6位，即可以爆破。</p>
+<p>脚本如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">y=&#x27;@DBApp&#x27;</span><br><span class="line">flag=&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">for i in range(100000,999999):</span><br><span class="line">    flag=str(i)+y                          </span><br><span class="line">    a=hashlib.sha1(flag.encode(&quot;utf-8&quot;))   #加密</span><br><span class="line">    h=a.hexdigest()                 #获取密文</span><br><span class="line">    if &#x27;6e32d0943418c2c33385bc35a1470250dd8923a9&#x27;==h:</span><br><span class="line">        print(flag)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+
+<p>得</p>
+<p><img src="/../photo/hash_6.png"></p>
+<p>注意比较时将字符串中大写字母改小写字母，我用大写字母爆破不出来。（可能加密后的密文字母是小写吧，这里我百度过，没找到[哭死]）</p>
+<p>拿到了第一个密码后输入到程序中（123321）</p>
+<p><img src="/../photo/hash_3.png"></p>
+<p>我们再看第二处，点进加密函数sub_401019</p>
+<p><img src="/../photo/hash_7.png"></p>
+<p>发现仍然是哈希，查看后发现是md5加密，由于这里不知道是不是全数字，无法爆破。（不过我试了试纯数字，爆破失败）所以只能跳过。</p>
+<p>下面有一个对str处理的函数sub_40100F,进去看看。</p>
+<p><img src="/../photo/hash_8.png"></p>
+<p>百度一下看不懂的函数，发现大意是从’AAA’中取出资源,返回了指针。</p>
+<p>把程序拖入ResourceHacker中可以找到’AAA’</p>
+<p><img src="/../photo/hash_12.png"></p>
+<p>往下看到有对str和从’AAA’处取出的资源处理的函数sub_401005。进入瞅瞅</p>
+<p>发现是’AAA’中的资源对str的异或</p>
+<p><img src="/../photo/hash_9.png"></p>
+<p>返回继续向下分析，新建了一个rtf文件，</p>
+<p><img src="/../photo/hash_11.png"></p>
+<p>发现之前异或后的值从0（起始地址）写入了这个rtf文件，</p>
+<p>找一个rtf文件拖进ResourceHacker看一下</p>
+<p><img src="/../photo/hash_13.png"></p>
+<p>由于是六位密码，我只需要取前六位对’AAA’中前六位异或即可得到密码。</p>
+<p>脚本如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">y=&#x27;@DBApp&#x27;</span><br><span class="line">flag=&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">for i in range(100000,999999):</span><br><span class="line">    flag=str(i)+y                          </span><br><span class="line">    a=hashlib.sha1(flag.encode(&quot;utf-8&quot;))   #加密</span><br><span class="line">    h=a.hexdigest()                 #获取密文</span><br><span class="line">    if &#x27;6e32d0943418c2c33385bc35a1470250dd8923a9&#x27;==h:</span><br><span class="line">        print(flag)</span><br><span class="line">        break</span><br><span class="line">flags=&#x27;&#x27;</span><br><span class="line">z=&#x27;&#123;\\rtf1&#x27;</span><br><span class="line">r=[0x05,0x7D,0x41,0x15,0x26,0x01]</span><br><span class="line">for d in range(len(r)):</span><br><span class="line">    flags+=chr(ord(z[d])^r[d]) </span><br><span class="line">print(flags)</span><br></pre></td></tr></table></figure>
+<p>得</p>
+<p><img src="/../photo/hash_14.png"></p>
+<p>将密码输入程序</p>
+<p><img src="/../photo/hash_15.png"></p>
+<p>运行后会生成一个rtf文件，打开得flag</p>
+<p><img src="/../photo/guakai6.png"></p>
+<p>总结：当我在第二处加密无法爆破时无法静心分析，到一半就写不下了，看了别人的wp才恍然大悟。</p>
+<p>未解决问题：对于sha1加密出的密文为何是小写没有搞懂。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl1248qci0000rou90yhd6bix" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-coffee" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/21/coffee/" class="article-date">
@@ -115,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/21/coffee/" data-id="cl105yqji0003qcu995zf6e1v" data-title="coffee" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/21/coffee/" data-id="cl1248qct0004rou98iuv6nnv" data-title="coffee" class="article-share-link">分享</a>
       
       
       
@@ -168,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl105yqjj0004qcu93j481vl4" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl1248qcu0005rou9gc6j0kbc" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
       
       
       
@@ -224,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl105yqjb0001qcu9ci339sed" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl1248qcm0001rou91r04cr3f" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
       
       
       
@@ -282,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl105yqj70000qcu9etx8c35j" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl1248qco0002rou9gfq53waz" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
       
       
       
@@ -326,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl105yqjn0009qcu94yoh4azw" data-title="攻防世界srm-50" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl1248qcx0009rou9bau29gzw" data-title="攻防世界srm-50" class="article-share-link">分享</a>
       
       
       
@@ -381,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl105yqjk0005qcu90eyodwyr" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl1248qcv0006rou9bk0lapo6" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
       
       
       
@@ -425,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl105yqjm0008qcu93oxrcomp" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl1248qcx000arou97m7z40n5" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -466,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl105yqjl0006qcu96tmfd1id" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl1248qcw0008rou97q3o3dwa" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -516,48 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl105yqjm0007qcu97iqfgn49" data-title="攻防世界re_2" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-攻防世界新手re_1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" class="article-date">
-  <time class="dt-published" datetime="2022-02-25T08:53:09.000Z" itemprop="datePublished">2022-02-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/">攻防世界新手re_1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="re-1-game"><a href="#re-1-game" class="headerlink" title="re_1___game"></a>re_1___game</h1><h2 id="直接ida走起，找到返回flag的函数，跟进，如图"><a href="#直接ida走起，找到返回flag的函数，跟进，如图" class="headerlink" title="直接ida走起，找到返回flag的函数，跟进，如图"></a>直接ida走起，找到返回flag的函数，跟进，如图</h2><p><img src="/../photo/1.png"></p>
-<h2 id="根据反编译代码直接用python写如下代码"><a href="#根据反编译代码直接用python写如下代码" class="headerlink" title="根据反编译代码直接用python写如下代码"></a>根据反编译代码直接用python写如下代码</h2><p><img src="/../photo/2.png"></p>
-<h2 id="得flag"><a href="#得flag" class="headerlink" title="得flag"></a>得flag</h2><p><img src="/../photo/3.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/25/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C%E6%96%B0%E6%89%8Bre_1/" data-id="cl105yqjo000aqcu926ct8dgm" data-title="攻防世界新手re_1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl1248qcw0007rou96njdb61k" data-title="攻防世界re_2" class="article-share-link">分享</a>
       
       
       
@@ -605,6 +652,10 @@
       <ul>
         
           <li>
+            <a href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/21/coffee/">coffee</a>
           </li>
         
@@ -618,10 +669,6 @@
         
           <li>
             <a href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/">攻防世界srm-50</a>
           </li>
         
       </ul>
