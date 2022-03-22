@@ -24,12 +24,13 @@
 <meta property="og:image" content="https://cczz1234.github.io/photo/hash_12.png">
 <meta property="og:image" content="https://cczz1234.github.io/photo/hash_9.png">
 <meta property="og:image" content="https://cczz1234.github.io/photo/hash_11.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/hash_17.png">
 <meta property="og:image" content="https://cczz1234.github.io/photo/hash_13.png">
 <meta property="og:image" content="https://cczz1234.github.io/photo/hash_14.png">
 <meta property="og:image" content="https://cczz1234.github.io/photo/hash_15.png">
-<meta property="og:image" content="https://cczz1234.github.io/photo/guakai6.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/hash_16.png">
 <meta property="article:published_time" content="2022-03-22T09:33:51.000Z">
-<meta property="article:modified_time" content="2022-03-22T12:30:28.360Z">
+<meta property="article:modified_time" content="2022-03-22T13:31:12.352Z">
 <meta property="article:author" content="嚚瘖">
 <meta property="article:tag" content="二进制">
 <meta name="twitter:card" content="summary">
@@ -153,6 +154,7 @@
 <p>返回继续向下分析，新建了一个rtf文件，</p>
 <p><img src="/../photo/hash_11.png"></p>
 <p>发现之前异或后的值从0（起始地址）写入了这个rtf文件，</p>
+<p><img src="/../photo/hash_17.png"></p>
 <p>找一个rtf文件拖进ResourceHacker看一下</p>
 <p><img src="/../photo/hash_13.png"></p>
 <p>由于是六位密码，我只需要取前六位对’AAA’中前六位异或即可得到密码。</p>
@@ -163,14 +165,14 @@
 <p>将密码输入程序</p>
 <p><img src="/../photo/hash_15.png"></p>
 <p>运行后会生成一个rtf文件，打开得flag</p>
-<p><img src="/../photo/guakai6.png"></p>
+<p><img src="/../photo/hash_16.png"></p>
 <p>总结：当我在第二处加密无法爆破时无法静心分析，到一半就写不下了，看了别人的wp才恍然大悟。</p>
 <p>未解决问题：对于sha1加密出的密文为何是小写没有搞懂。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl1248qci0000rou90yhd6bix" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl126dyus00000gu94zcjg2e0" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
       
       
       
