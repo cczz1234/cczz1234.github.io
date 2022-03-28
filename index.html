@@ -78,6 +78,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-buuctf-ACTF新生赛2020-usualCrypt1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" class="article-date">
+  <time class="dt-published" datetime="2022-03-28T10:01:34.000Z" itemprop="datePublished">2022-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/">buuctf--[ACTF新生赛2020]usualCrypt1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一道比较简单的题，其中有个知识点<br>拿到文件，查壳</p>
+<p><img src="/../photo/b64return_1.png"></p>
+<p>无壳，32位</p>
+<p>用ida看看,main函数如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; // esi</span><br><span class="line">  int result; // eax</span><br><span class="line">  int v5[3]; // [esp+8h] [ebp-74h] BYREF</span><br><span class="line">  __int16 v6; // [esp+14h] [ebp-68h]</span><br><span class="line">  char v7; // [esp+16h] [ebp-66h]</span><br><span class="line">  char v8[100]; // [esp+18h] [ebp-64h] BYREF</span><br><span class="line"></span><br><span class="line">  sub_403CF8(&amp;unk_40E140);</span><br><span class="line">  scanf(&quot;%s&quot;, v8);</span><br><span class="line">  v5[0] = 0;</span><br><span class="line">  v5[1] = 0;</span><br><span class="line">  v5[2] = 0;</span><br><span class="line">  v6 = 0;</span><br><span class="line">  v7 = 0;</span><br><span class="line">  sub_401080(v8, strlen(v8), v5);               // base64</span><br><span class="line">  v3 = 0;</span><br><span class="line">  while ( *((_BYTE *)v5 + v3) == byte_40E0E4[v3] )</span><br><span class="line">  &#123;</span><br><span class="line">    if ( ++v3 &gt; strlen((const char *)v5) )</span><br><span class="line">      goto LABEL_6;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_403CF8(aError);</span><br><span class="line">LABEL_6:</span><br><span class="line">  if ( v3 - 1 == strlen(byte_40E0E4) )</span><br><span class="line">    result = sub_403CF8(aAreYouHappyYes);</span><br><span class="line">  else</span><br><span class="line">    result = sub_403CF8(aAreYouHappyNo);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析下，大概就是对输入的v8处理后进行比较。</p>
+<p>sub_401080应该就是加密函数。</p>
+<p>进入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl sub_401080(int a1, int a2, const char *a3)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; // edi</span><br><span class="line">  int v4; // esi</span><br><span class="line">  int v5; // edx</span><br><span class="line">  int v6; // eax</span><br><span class="line">  int v7; // ecx</span><br><span class="line">  int v8; // esi</span><br><span class="line">  int v9; // esi</span><br><span class="line">  int v10; // esi</span><br><span class="line">  int v11; // esi</span><br><span class="line">  _BYTE *v12; // ecx</span><br><span class="line">  int v13; // esi</span><br><span class="line">  int v15; // [esp+18h] [ebp+8h]</span><br><span class="line"></span><br><span class="line">  v3 = 0;</span><br><span class="line">  v4 = 0;</span><br><span class="line">  sub_401000();</span><br><span class="line">  v5 = a2 % 3;</span><br><span class="line">  v6 = a1;</span><br><span class="line">  v7 = a2 - a2 % 3;</span><br><span class="line">  v15 = a2 % 3;</span><br><span class="line">  if ( v7 &gt; 0 )</span><br><span class="line">  &#123;</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">      LOBYTE(v5) = *(_BYTE *)(a1 + v3);</span><br><span class="line">      v3 += 3;</span><br><span class="line">      v8 = v4 + 1;</span><br><span class="line">      a3[v8 - 1] = byte_40E0A0[(v5 &gt;&gt; 2) &amp; 0x3F];</span><br><span class="line">      a3[v8++] = byte_40E0A0[16 * (*(_BYTE *)(a1 + v3 - 3) &amp; 3) + (((int)*(unsigned __int8 *)(a1 + v3 - 2) &gt;&gt; 4) &amp; 0xF)];</span><br><span class="line">      a3[v8++] = byte_40E0A0[4 * (*(_BYTE *)(a1 + v3 - 2) &amp; 0xF) + (((int)*(unsigned __int8 *)(a1 + v3 - 1) &gt;&gt; 6) &amp; 3)];</span><br><span class="line">      v5 = *(_BYTE *)(a1 + v3 - 1) &amp; 0x3F;</span><br><span class="line">      v4 = v8 + 1;</span><br><span class="line">      a3[v4 - 1] = byte_40E0A0[v5];</span><br><span class="line">    &#125;</span><br><span class="line">    while ( v3 &lt; v7 );</span><br><span class="line">    v5 = v15;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( v5 == 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    LOBYTE(v7) = *(_BYTE *)(v3 + a1);</span><br><span class="line">    v9 = v4 + 1;</span><br><span class="line">    a3[v9 - 1] = byte_40E0A0[(v7 &gt;&gt; 2) &amp; 0x3F];</span><br><span class="line">    v10 = v9 + 1;</span><br><span class="line">    a3[v10 - 1] = byte_40E0A0[16 * (*(_BYTE *)(v3 + a1) &amp; 3)];</span><br><span class="line">    a3[v10] = &#x27;=&#x27;;</span><br><span class="line">LABEL_8:</span><br><span class="line">    v13 = v10 + 1;</span><br><span class="line">    a3[v13] = &#x27;=&#x27;;</span><br><span class="line">    v4 = v13 + 1;</span><br><span class="line">    goto LABEL_9;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( v5 == 2 )</span><br><span class="line">  &#123;</span><br><span class="line">    v11 = v4 + 1;</span><br><span class="line">    a3[v11 - 1] = byte_40E0A0[((int)*(unsigned __int8 *)(v3 + a1) &gt;&gt; 2) &amp; 0x3F];</span><br><span class="line">    v12 = (_BYTE *)(v3 + a1 + 1);</span><br><span class="line">    LOBYTE(v6) = *v12;</span><br><span class="line">    v10 = v11 + 1;</span><br><span class="line">    a3[v10 - 1] = byte_40E0A0[16 * (*(_BYTE *)(v3 + a1) &amp; 3) + ((v6 &gt;&gt; 4) &amp; 0xF)];</span><br><span class="line">    a3[v10] = byte_40E0A0[4 * (*v12 &amp; 0xF)];</span><br><span class="line">    goto LABEL_8;</span><br><span class="line">  &#125;</span><br><span class="line">LABEL_9:</span><br><span class="line">  a3[v4] = 0;</span><br><span class="line">  return sub_401030(a3);                        // 大小互换</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面有个处理函数sub_401000,进去看看</p>
+<p><img src="/../photo/b64return_2.png"></p>
+<p>应该是数组值交换，点进去</p>
+<p><img src="/../photo/b64return_3.png"></p>
+<p>应该是b64的解码表，这里对解码表进行数值交换。</p>
+<p>那就基本清楚了，这个交换函数下面应该是b64加密。但在最后没有返回v3，而是处理后返回。</p>
+<p><img src="/../photo/b64return_4.png"></p>
+<p>进入查看发现是大小写转换。</p>
+<p>可以写脚本了，将结果大小写转换，再对解码表转换，然后解密，脚本如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">import string</span><br><span class="line">x1=&#x27;zMXHz3TIgnxLxJhFAdtZn2fFk3lYCrtPC2l9&#x27;</span><br><span class="line">str3=&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">str1=list(str3)</span><br><span class="line">str2=str1</span><br><span class="line">j=16</span><br><span class="line">for i in range(6,15):</span><br><span class="line">    str2[j],str1[i]=str1[i],str2[j]</span><br><span class="line">    j+=1</span><br><span class="line">str1=&#x27;&#x27;.join(str1)</span><br><span class="line">print(str1)</span><br><span class="line">x1=x1.swapcase()                                                     #大小写转换</span><br><span class="line">print(x1)                                                                 </span><br><span class="line">print(base64.b64decode(x1.translate(str.maketrans(str1,str3))))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>得flag</p>
+<p><img src="/../photo/b64return_5.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" data-id="cl1ake5470003xsu96bz191sn" data-title="buuctf--[ACTF新生赛2020]usualCrypt1" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-CrackRTF-1-buuctf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/22/CrackRTF-1-buuctf/" class="article-date">
@@ -155,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl126i4b30000rcu9eurb6cc8" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl1ake5400000xsu9cgh5cmtg" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
       
       
       
@@ -204,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/21/coffee/" data-id="cl126i4bi0006rcu9426ads42" data-title="coffee" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/21/coffee/" data-id="cl1ake5470004xsu99qlyd99l" data-title="coffee" class="article-share-link">分享</a>
       
       
       
@@ -257,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl126i4bi0005rcu95czkafp0" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl1ake5480005xsu95gz13a5j" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
       
       
       
@@ -313,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl126i4bb0002rcu9gw6o3kms" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl1ake5460002xsu98nd2gopy" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
       
       
       
@@ -371,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl126i4ba0001rcu91hr8c6g7" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl1ake5450001xsu973kl0xc7" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
       
       
       
@@ -415,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl126i4bl000brcu97b86g3si" data-title="攻防世界srm-50" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl1ake54c000bxsu9hf3h9hmj" data-title="攻防世界srm-50" class="article-share-link">分享</a>
       
       
       
@@ -470,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl126i4bh0004rcu905lr48kn" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl1ake5490007xsu93exo1uzb" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
       
       
       
@@ -514,7 +573,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl126i4bj0008rcu9g0va6ojm" data-title="攻防世界re_4" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl1ake54a0009xsu96o5v3val" data-title="攻防世界re_4" class="article-share-link">分享</a>
       
       
       
@@ -555,57 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl126i4bk0009rcu9dw7fdp53" data-title="攻防世界re_3" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-攻防世界re-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" class="article-date">
-  <time class="dt-published" datetime="2022-02-26T04:57:18.000Z" itemprop="datePublished">2022-02-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/">攻防世界re_2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="re-2-open-source"><a href="#re-2-open-source" class="headerlink" title="re_2__open-source"></a>re_2__open-source</h1><p>源码如下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    if (argc != 4) &#123;</span><br><span class="line">    	printf(&quot;what?\n&quot;);</span><br><span class="line">    	exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    unsigned int first = atoi(argv[1]);</span><br><span class="line">    if (first != 0xcafe) &#123;</span><br><span class="line">    	printf(&quot;you are wrong, sorry.\n&quot;);</span><br><span class="line">    	exit(2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    unsigned int second = atoi(argv[2]);</span><br><span class="line">    if (second % 5 == 3 || second % 17 != 8) &#123;</span><br><span class="line">    	printf(&quot;ha, you won&#x27;t get it!\n&quot;);</span><br><span class="line">    	exit(3);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (strcmp(&quot;h4cky0u&quot;, argv[3])) &#123;</span><br><span class="line">    	printf(&quot;so close, dude!\n&quot;);</span><br><span class="line">    	exit(4);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;Brr wrrr grr\n&quot;);</span><br><span class="line"></span><br><span class="line">    unsigned int hash = first * 31337 + (second % 17) * 11 + strlen(argv[3]) - 1615810207;</span><br><span class="line"></span><br><span class="line">    printf(&quot;Get your key: &quot;);</span><br><span class="line">    printf(&quot;%x\n&quot;, hash);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>得</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">first=0xcafe</span><br></pre></td></tr></table></figure>
-<p>由下式计算second</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">second=1</span><br><span class="line">while 1:</span><br><span class="line">    if second % 5 != 3 :</span><br><span class="line">        if second % 17 == 8:</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">    second+=1</span><br></pre></td></tr></table></figure>
-<p>后计算</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash = first * 31337 + (second % 17) * 11 + 7 - 1615810207</span><br></pre></td></tr></table></figure>
-<p>以16进制输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(hex(hash))</span><br></pre></td></tr></table></figure>
-<p>得<br>0xc0ffee</p>
-<p>将c0ffee提交即可</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-2/" data-id="cl126i4bj0007rcu91dzhennc" data-title="攻防世界re_2" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl1ake54b000axsu9904y3t5s" data-title="攻防世界re_3" class="article-share-link">分享</a>
       
       
       
@@ -653,6 +662,10 @@
       <ul>
         
           <li>
+            <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/">buuctf--[ACTF新生赛2020]usualCrypt1</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
           </li>
         
@@ -666,10 +679,6 @@
         
           <li>
             <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/11/buuctf-re3-base64/">buuctf_re3_base64</a>
           </li>
         
       </ul>

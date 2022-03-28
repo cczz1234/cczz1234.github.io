@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>buuctf--[ACTF新生赛2020]usualCrypt1 | 嚚瘖的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一道比较简单的题，其中有个知识点拿到文件，查壳  无壳，32位 用ida看看,main函数如下 12345678910111213141516171819202122232425262728293031int __cdecl main(int argc, const char **argv, const char **envp)&amp;#123;  int v3; &#x2F;&#x2F; esi  int result;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="buuctf--[ACTF新生赛2020]usualCrypt1">
+<meta property="og:url" content="https://cczz1234.github.io/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/index.html">
+<meta property="og:site_name" content="嚚瘖的个人博客">
+<meta property="og:description" content="一道比较简单的题，其中有个知识点拿到文件，查壳  无壳，32位 用ida看看,main函数如下 12345678910111213141516171819202122232425262728293031int __cdecl main(int argc, const char **argv, const char **envp)&amp;#123;  int v3; &#x2F;&#x2F; esi  int result;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cczz1234.github.io/photo/b64return_1.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/b64return_2.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/b64return_3.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/b64return_4.png">
+<meta property="og:image" content="https://cczz1234.github.io/photo/b64return_5.png">
+<meta property="article:published_time" content="2022-03-28T10:01:34.000Z">
+<meta property="article:modified_time" content="2022-03-28T10:25:06.383Z">
+<meta property="article:author" content="嚚瘖">
+<meta property="article:tag" content="二进制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cczz1234.github.io/photo/b64return_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="嚚瘖的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">嚚瘖的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I love you</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://cczz1234.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-buuctf-ACTF新生赛2020-usualCrypt1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" class="article-date">
+  <time class="dt-published" datetime="2022-03-28T10:01:34.000Z" itemprop="datePublished">2022-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      buuctf--[ACTF新生赛2020]usualCrypt1
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一道比较简单的题，其中有个知识点<br>拿到文件，查壳</p>
+<p><img src="/../photo/b64return_1.png"></p>
+<p>无壳，32位</p>
+<p>用ida看看,main函数如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; // esi</span><br><span class="line">  int result; // eax</span><br><span class="line">  int v5[3]; // [esp+8h] [ebp-74h] BYREF</span><br><span class="line">  __int16 v6; // [esp+14h] [ebp-68h]</span><br><span class="line">  char v7; // [esp+16h] [ebp-66h]</span><br><span class="line">  char v8[100]; // [esp+18h] [ebp-64h] BYREF</span><br><span class="line"></span><br><span class="line">  sub_403CF8(&amp;unk_40E140);</span><br><span class="line">  scanf(&quot;%s&quot;, v8);</span><br><span class="line">  v5[0] = 0;</span><br><span class="line">  v5[1] = 0;</span><br><span class="line">  v5[2] = 0;</span><br><span class="line">  v6 = 0;</span><br><span class="line">  v7 = 0;</span><br><span class="line">  sub_401080(v8, strlen(v8), v5);               // base64</span><br><span class="line">  v3 = 0;</span><br><span class="line">  while ( *((_BYTE *)v5 + v3) == byte_40E0E4[v3] )</span><br><span class="line">  &#123;</span><br><span class="line">    if ( ++v3 &gt; strlen((const char *)v5) )</span><br><span class="line">      goto LABEL_6;</span><br><span class="line">  &#125;</span><br><span class="line">  sub_403CF8(aError);</span><br><span class="line">LABEL_6:</span><br><span class="line">  if ( v3 - 1 == strlen(byte_40E0E4) )</span><br><span class="line">    result = sub_403CF8(aAreYouHappyYes);</span><br><span class="line">  else</span><br><span class="line">    result = sub_403CF8(aAreYouHappyNo);</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析下，大概就是对输入的v8处理后进行比较。</p>
+<p>sub_401080应该就是加密函数。</p>
+<p>进入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl sub_401080(int a1, int a2, const char *a3)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; // edi</span><br><span class="line">  int v4; // esi</span><br><span class="line">  int v5; // edx</span><br><span class="line">  int v6; // eax</span><br><span class="line">  int v7; // ecx</span><br><span class="line">  int v8; // esi</span><br><span class="line">  int v9; // esi</span><br><span class="line">  int v10; // esi</span><br><span class="line">  int v11; // esi</span><br><span class="line">  _BYTE *v12; // ecx</span><br><span class="line">  int v13; // esi</span><br><span class="line">  int v15; // [esp+18h] [ebp+8h]</span><br><span class="line"></span><br><span class="line">  v3 = 0;</span><br><span class="line">  v4 = 0;</span><br><span class="line">  sub_401000();</span><br><span class="line">  v5 = a2 % 3;</span><br><span class="line">  v6 = a1;</span><br><span class="line">  v7 = a2 - a2 % 3;</span><br><span class="line">  v15 = a2 % 3;</span><br><span class="line">  if ( v7 &gt; 0 )</span><br><span class="line">  &#123;</span><br><span class="line">    do</span><br><span class="line">    &#123;</span><br><span class="line">      LOBYTE(v5) = *(_BYTE *)(a1 + v3);</span><br><span class="line">      v3 += 3;</span><br><span class="line">      v8 = v4 + 1;</span><br><span class="line">      a3[v8 - 1] = byte_40E0A0[(v5 &gt;&gt; 2) &amp; 0x3F];</span><br><span class="line">      a3[v8++] = byte_40E0A0[16 * (*(_BYTE *)(a1 + v3 - 3) &amp; 3) + (((int)*(unsigned __int8 *)(a1 + v3 - 2) &gt;&gt; 4) &amp; 0xF)];</span><br><span class="line">      a3[v8++] = byte_40E0A0[4 * (*(_BYTE *)(a1 + v3 - 2) &amp; 0xF) + (((int)*(unsigned __int8 *)(a1 + v3 - 1) &gt;&gt; 6) &amp; 3)];</span><br><span class="line">      v5 = *(_BYTE *)(a1 + v3 - 1) &amp; 0x3F;</span><br><span class="line">      v4 = v8 + 1;</span><br><span class="line">      a3[v4 - 1] = byte_40E0A0[v5];</span><br><span class="line">    &#125;</span><br><span class="line">    while ( v3 &lt; v7 );</span><br><span class="line">    v5 = v15;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( v5 == 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    LOBYTE(v7) = *(_BYTE *)(v3 + a1);</span><br><span class="line">    v9 = v4 + 1;</span><br><span class="line">    a3[v9 - 1] = byte_40E0A0[(v7 &gt;&gt; 2) &amp; 0x3F];</span><br><span class="line">    v10 = v9 + 1;</span><br><span class="line">    a3[v10 - 1] = byte_40E0A0[16 * (*(_BYTE *)(v3 + a1) &amp; 3)];</span><br><span class="line">    a3[v10] = &#x27;=&#x27;;</span><br><span class="line">LABEL_8:</span><br><span class="line">    v13 = v10 + 1;</span><br><span class="line">    a3[v13] = &#x27;=&#x27;;</span><br><span class="line">    v4 = v13 + 1;</span><br><span class="line">    goto LABEL_9;</span><br><span class="line">  &#125;</span><br><span class="line">  if ( v5 == 2 )</span><br><span class="line">  &#123;</span><br><span class="line">    v11 = v4 + 1;</span><br><span class="line">    a3[v11 - 1] = byte_40E0A0[((int)*(unsigned __int8 *)(v3 + a1) &gt;&gt; 2) &amp; 0x3F];</span><br><span class="line">    v12 = (_BYTE *)(v3 + a1 + 1);</span><br><span class="line">    LOBYTE(v6) = *v12;</span><br><span class="line">    v10 = v11 + 1;</span><br><span class="line">    a3[v10 - 1] = byte_40E0A0[16 * (*(_BYTE *)(v3 + a1) &amp; 3) + ((v6 &gt;&gt; 4) &amp; 0xF)];</span><br><span class="line">    a3[v10] = byte_40E0A0[4 * (*v12 &amp; 0xF)];</span><br><span class="line">    goto LABEL_8;</span><br><span class="line">  &#125;</span><br><span class="line">LABEL_9:</span><br><span class="line">  a3[v4] = 0;</span><br><span class="line">  return sub_401030(a3);                        // 大小互换</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面有个处理函数sub_401000,进去看看</p>
+<p><img src="/../photo/b64return_2.png"></p>
+<p>应该是数组值交换，点进去</p>
+<p><img src="/../photo/b64return_3.png"></p>
+<p>应该是b64的解码表，这里对解码表进行数值交换。</p>
+<p>那就基本清楚了，这个交换函数下面应该是b64加密。但在最后没有返回v3，而是处理后返回。</p>
+<p><img src="/../photo/b64return_4.png"></p>
+<p>进入查看发现是大小写转换。</p>
+<p>可以写脚本了，将结果大小写转换，再对解码表转换，然后解密，脚本如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">import string</span><br><span class="line">x1=&#x27;zMXHz3TIgnxLxJhFAdtZn2fFk3lYCrtPC2l9&#x27;</span><br><span class="line">str3=&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#x27;</span><br><span class="line">str1=list(str3)</span><br><span class="line">str2=str1</span><br><span class="line">j=16</span><br><span class="line">for i in range(6,15):</span><br><span class="line">    str2[j],str1[i]=str1[i],str2[j]</span><br><span class="line">    j+=1</span><br><span class="line">str1=&#x27;&#x27;.join(str1)</span><br><span class="line">print(str1)</span><br><span class="line">x1=x1.swapcase()                                                     #大小写转换</span><br><span class="line">print(x1)                                                                 </span><br><span class="line">print(base64.b64decode(x1.translate(str.maketrans(str1,str3))))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>得flag</p>
+<p><img src="/../photo/b64return_5.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" data-id="cl1ake5470003xsu96bz191sn" data-title="buuctf--[ACTF新生赛2020]usualCrypt1" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/22/CrackRTF-1-buuctf/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">CrackRTF 1---buuctf</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/">buuctf--[ACTF新生赛2020]usualCrypt1</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/21/coffee/">coffee</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/17/rsa-1-buuctf/">rsa 1 buuctf</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 嚚瘖<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
