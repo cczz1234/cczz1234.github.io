@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>嚚瘖的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="MySQL启动win+Rservices.msc找到mysql mysql -u root -pmysql -u root -h 127.0.0.1 -pmysql -u root -h localhost -p SQL(Strucutured Query Language) –结构化查询语言   DDL(数据定义语言)  –&gt;创建删除修改各种对象 –&gt;creat&#x2F;drop&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嚚瘖的个人博客">
+<meta property="og:url" content="https://cczz1234.github.io/2022/08/05/mysql/index.html">
+<meta property="og:site_name" content="嚚瘖的个人博客">
+<meta property="og:description" content="MySQL启动win+Rservices.msc找到mysql mysql -u root -pmysql -u root -h 127.0.0.1 -pmysql -u root -h localhost -p SQL(Strucutured Query Language) –结构化查询语言   DDL(数据定义语言)  –&gt;创建删除修改各种对象 –&gt;creat&#x2F;drop&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-05T03:03:44.583Z">
+<meta property="article:modified_time" content="2022-08-05T01:46:36.943Z">
+<meta property="article:author" content="嚚瘖">
+<meta property="article:tag" content="二进制">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="嚚瘖的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">嚚瘖的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I love you</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://cczz1234.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/05/mysql/" class="article-date">
+  <time class="dt-published" datetime="2022-08-05T03:03:44.583Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="MySQL启动"><a href="#MySQL启动" class="headerlink" title="MySQL启动"></a>MySQL启动</h1><p>win+R<br>services.msc<br>找到mysql</p>
+<p>mysql -u root -p<br>mysql -u root -h 127.0.0.1 -p<br>mysql -u root -h localhost -p</p>
+<h1 id="SQL-Strucutured-Query-Language-–结构化查询语言"><a href="#SQL-Strucutured-Query-Language-–结构化查询语言" class="headerlink" title="SQL(Strucutured Query Language) –结构化查询语言"></a>SQL(Strucutured Query Language) –结构化查询语言</h1><p>   DDL(数据定义语言)  –&gt;创建删除修改各种对象 –&gt;creat&#x2F;drop&#x2F;alter</p>
+<p>   DML(数据操作语言)  –&gt;插入，删除，修改数据   –&gt;insert&#x2F;delete&#x2F;update</p>
+<p>   DQL(数据查询语言)  –&gt;检索数据   —&gt;select<br>   select version()    查询版本<br>   DCL(数据控制语言)  –&gt;授予或者召回用户权限 —&gt;grant&#x2F;revoke</p>
+<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>0.以某种编码建立<br>    创建    create database [name] default charset utf8mb4;</p>
+<p>1.删除    drop database [name] ;<br>        drop database if exists [name]; 如果存在则删除</p>
+<p>2.查看创建数据库的过程<br>show create database school;</p>
+<p>3.切换到指定的数据库<br>use school;</p>
+<p>4.显示数据库中所有的表<br>show tables     显示内容<br>show databases 显示数据库</p>
+<p>5.创建二维表<br>create table tb_student<br>(<br>      stu_id integer not null comment ‘学号’,<br>      stu_name varchar(20) not null comment ‘姓名’,<br>      stu_sex char(1)&#x2F;boolean default 1 comment ‘性别’,<br>      stu_birth date comment ‘出生日期’,<br>      primary key (stu_id)<br>)engine&#x3D;innodb comment ‘学生表’;</p>
+<p>主键(primary key):能够唯一确定一条记录的列,且不能为空</p>
+<p> 数据类型<br>  ~ 整数 int&#x2F;bigint&#x2F;smallint&#x2F;tinyint—&gt;unsigned<br>  ~ 小数 float&#x2F;double&#x2F;decimal<br>  ~ 时间日期 time&#x2F;date&#x2F;datetime&#x2F;timestamp<br>  ~ 字符串 char(10)定长&#x2F;varchar(10)变长<br>  ~ 大对象 longtext&#x2F;longblob —&gt;4G</p>
+<p> 修改表alter<br>~ – 添加列<br>alter table tb_student add column stu_addr varchar(20) default ‘’;</p>
+<p>~ – 删除列<br>alter table tb_student drop column stu_addr;</p>
+<p>~ – 修改列名和列<br>alter table tb_student change columen stu_sex stu_gender boolean default 1 comment ‘性别’;</p>
+<p>~ –只改数据类型<br>alter table tb_student modify column stu_gender char(1) default ‘男’ comment ‘性别’;</p>
+<p>~ –建学院表<br>&#x2F;&#x2F;auto_increment自动编号，默认从1开始<br>create table tb_college<br>(<br>    col_id int unsigned auto_increment comment ‘编号’，<br>    col_name varchar(50) not null comment ‘名称’，<br>    col_intro varchar(500) default ‘’ comment ‘介绍’，<br>    primary key (col_id)<br>) engine&#x3D;innodb auto_increment&#x3D;2 comment ‘学院表’;</p>
+<p>~ – 增添列<br>alter table tb_student add column col_id int unsigned not null comment ‘学院编号’; </p>
+<p>~ – 修改学生表，添加一个外键约束。tb_college–&gt;col_id&gt;&gt;&gt;&gt;&gt;&gt;&gt;tb_student–&gt;col_id</p>
+<p>alter table tb_student add constraint fk_student_col_id foreign key (col_id) references tb_college (col_id);</p>
+<h3 id="关系的重数"><a href="#关系的重数" class="headerlink" title="关系的重数"></a>关系的重数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">学生表&lt;------从属--------&gt;学院表</span><br><span class="line">（多）                   （一）</span><br></pre></td></tr></table></figure>
+
+<h3 id="设计表"><a href="#设计表" class="headerlink" title="设计表"></a>设计表</h3><p>~ ER图 —–&gt;Entity Relationship Diagram</p>
+<pre><code>实体：矩形框----&gt;表
+属性：椭圆框----&gt;列
+关系：菱形框
+重数：一对一、一对多、多对多
+</code></pre>
+<p>~ EER图 —-&gt;Extended ER图<br>    正项工程：图变表<br>    反向工程：表变图</p>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>0.增添数据 –insert</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">方法一</span><br><span class="line">insert into tb_college values </span><br><span class="line">(default, &#x27;计算机学院&#x27;, &#x27;学习计算机技术和网络安全&#x27;);</span><br><span class="line"></span><br><span class="line">方法二(给指定值赋值)</span><br><span class="line">insert into tb_college (col_name,col_intro) values</span><br><span class="line">(&#x27;网络安全学院&#x27;，&#x27;网络安全爱好者聚集地&#x27;);</span><br><span class="line"></span><br><span class="line">方法三</span><br><span class="line">insert into tb_college  values</span><br><span class="line">(default, &#x27;计算机学院&#x27;, &#x27;学习计算机技术和网络安全&#x27;),</span><br><span class="line">(default, &#x27;网络安全学院&#x27;，&#x27;网络安全爱好者聚集地&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>1.删除 –delete</p>
+<p>delete from tb_college where col_id&#x3D;2; &#x2F;&#x2F;外键约束不可删</p>
+<p>delete from tb_college where col_id in (4,5);</p>
+<p>truncate table tb_college;   &#x2F;&#x2F;删表且无法恢复</p>
+<p>2.更新<br>update tb_student set stu_addr&#x3D;’黄山’ where stu_id in (1);</p>
+<p>update tb_student set stu_addr&#x3D;’黄山’, stu_gender&#x3D;0 where stu_id between 1 and 3;</p>
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><h3 id="查询select"><a href="#查询select" class="headerlink" title="查询select"></a>查询select</h3><p>– 查询所有学生信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tb_student;  //效率低</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select stu_id, stu_name, stu_sex, stu_birth, stu_addr, col_id from tb_student;       //效率高</span><br></pre></td></tr></table></figure>
+
+<p>– 查询所有学生名子及地址<br>select stu_name, stu_addr from tb_student;</p>
+<p>– 别名<br>select stu_name as 姓名, stu_addr as 地址 from tb_student;</p>
+<p>– 有条件性查询可以在where后用and(且)或者or(或者)，也可以用between … and …(整数，时间日期均可)<br>select stu_name, stu_birth from tb_student where stu_sex&#x3D;1;</p>
+<p>– 在查询时对列的值处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">stu_id, </span><br><span class="line">stu_name,</span><br><span class="line">case stu_gender when 1 then &#x27;男&#x27; else &#x27;女&#x27; end as 性别,    //mysql中可以用if(stu_gender, &#x27;男&#x27;， &#x27;女&#x27;) as 性别，</span><br><span class="line">stu_birth, stu_addr, col_id from tb_student</span><br></pre></td></tr></table></figure>
+
+<p>– 查询模糊条件<br>– 在sql中通配符%可以匹配零个或任意多个字符<br>select stu_name, stu_gender from tb_student where stu_name like ‘%杨%’;   &#x2F;&#x2F;前面加%效率低，较慢</p>
+<p>– 通配符’<em>‘代表一个字符<br>select stu_name, stu_gender from tb_student where stu_name like ‘杨</em>‘;</p>
+<p>– 并集运算<br>select stu_name, stu_gender from tb_student where stu_name like ‘%杨%’<br>union<br>select stu_name, stu_gender from tb_student where stu_name like ‘%红%’;</p>
+<p>– 并集运算（保留重复）<br>select stu_name, stu_gender from tb_student where stu_name like ‘%红%’<br>union all<br>select stu_name, stu_gender from tb_student where stu_name like ‘%杨%’;</p>
+<p>– 正则表达式的模糊匹配<br>^ 开始<br>$ 结尾<br>{} 里面跟量词<br>select stu_name, stu_gender from tb_student where stu_name regexp ‘^杨.{1,3}$’</p>
+<p>– null做任何运算结果为null<br>select stu_name, stu_gender from tb_student where null;</p>
+<p>– 查没有录入家庭住址<br>select stu_name, stu_gender from tb_student where stu_addr is null;</p>
+<p>– 查家庭住址不为空的<br>select stu_name, stu_gender from tb_student where stu_addr is not null;</p>
+<p>– &lt;&gt;不等号  &lt;&#x3D;&gt;等号<br>select stu_name, stu_gender from tb_student where stu_addr &lt;&#x3D;&gt; null;</p>
+<p>select stu_name, stu_gender from tb_student where stu_addr &lt;&gt; null;</p>
+<p>– 查询学生住址（去重）<br>select distinct stu_adrr from tb_student where stu_addr is not null</p>
+<p>– 查询后排序</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/08/05/mysql/" data-id="cl6fvvmkl0007msu9fbirekd2" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/05/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/05/web/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/05/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/05/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/05/web/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/">buuctf--[ACTF新生赛2020]usualCrypt1</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 嚚瘖<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

